@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package test;
+
+option go_package = "github.com/bopvlk/basic_grpc/pb";
+
+import "google/api/annotations.proto";
+
+service Api {
+  rpc GetTest (GetRequestTest) returns (ResponseTest) {
+    option (google.api.http) = {
+      get: "/v2/test/get-test",
+    };
+  }
+}
+message GetRequestTest {
+  string text = 1; // запит: Hello
+}
+message ResponseTest {
+  string result = 1; // Відповідь World
+}
